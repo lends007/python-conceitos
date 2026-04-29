@@ -1,0 +1,15 @@
+#string
+nome = 'Pedro'
+sobrenome = 'santos'
+nome_completo = nome + ' ' + sobrenome
+#variaveis com nomes compostos usam _
+#para separar as palavras, isso e chamado de snake_case
+print(nome_completo)
+#int
+idade = 30
+#float
+altura = 1.75
+#boolean
+estudante = True
+
+VARIAVEIS_CONSTANTE = 'Constante'
