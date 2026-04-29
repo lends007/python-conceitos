@@ -27,3 +27,6 @@ Admin.delete(1)
 print(Admin.get_all_users())
 
 
+print("POHA DO GIT LIXO ")
+
+
