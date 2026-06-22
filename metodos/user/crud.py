@@ -1,15 +1,15 @@
 from db import USERS
+from validation import validate_email
 from encryption import encrypt_password
-from validations import validate_email
+import asyncio
 
-def list_users():
-    return [user for user in USERS]
-
-def create_users(username, email, password):
-    if not validate_email(email):
-        return "email invalido"
+async def create_user(username, email, password):
+    email_validated = await validate_email(email)
+    if not email_validated:
+        return 'email invalido'
     
-    password_hash = encrypt_password(password)
+    password_hash = await encrypt_password(password) 
+
 
     id = len(USERS) + 1
     new_user = {
@@ -19,25 +19,29 @@ def create_users(username, email, password):
         'password': password_hash
     }
 
-
     USERS.append(new_user)
-    return "email cadastrado com exito"
+    return 'Usuário criado com sucesso'
 
-def update_users (id, username, email, password):
-    if not validate_email(email):
-        return "email invalido"
+async def list_users():
+    return [user for user in USERS]
+
+async def update_user(id, username, email, password):
+    email_validated = await validate_email(email)
+    if not email_validated:
+        return 'email invalido'
     
-    password_hash = encrypt_password(password)
-
-    USERS [id - 1] = {
+    password_hash = await encrypt_password(password)
+    
+    USERS[id -1] = {    
         'id': id,
         'username': username,
         'email': email,
         'password': password_hash
     }
-    return 'usuario atualizado com exito'
+    return 'Usuário atualizado com sucesso'
 
-def remove_users (id):
-    USERS.pop(id-1)
-    return 'Usuario removido com exito'
 
+async def remove_user(id):
+
+    USERS.pop(id - 1)
+    return 'Usuário removido com sucesso'

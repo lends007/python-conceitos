@@ -1,4 +1,4 @@
-def encrypt_password(password): #maria123
+async def encrypt_password(password): #maria123
     encrypt_password = ""
     for character in password:
 
@@ -7,7 +7,7 @@ def encrypt_password(password): #maria123
 
     return encrypt_password
 
-def decrypt_password(password):
+async def decrypt_password(password):
      decrypt_password = ""
 
      for character in password:

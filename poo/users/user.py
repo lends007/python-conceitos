@@ -1,4 +1,4 @@
-from db import USERS
+ from db import USERS
 
 class User:
     def __init__(self, id, username, password, email):
